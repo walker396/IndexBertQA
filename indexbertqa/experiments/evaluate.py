@@ -5,8 +5,7 @@ import numpy as np
 from indexbertqa.utils.utils import choose_best_answer, weighted_score
 
 from indexbertqa.experiments.eval.evaluate_v1 import squad_v1_eval as squad_evaluation
-from indexbertqa.experiments.eval.evaluate_v1_drcd import evaluation as drcd_evaluation
-from indexbertqa.experiments.eval.evaluate_v1_cmrc import evaluate as cmrc_evaluation
+
 
 
 def get_score_with_results(eval_data, predictions, mu, dataset):
@@ -38,18 +37,18 @@ def get_score_with_results(eval_data, predictions, mu, dataset):
     json.dump(answers, open("tmp.answer", 'w'))
     json.dump(score, open("tmp.score", 'w'))
 
-    if dataset == "squad":
-        eval_result = squad_evaluation(eval_data, "tmp.answer")
-    elif dataset == "cmrc":
-        eval_result = cmrc_evaluation(eval_data, "tmp.answer")
-        eval_result = {"f1_score": eval_result[0],
-                        "exact_match": eval_result[1],
-                        "total_count": eval_result[2],
-                        "skip_count": eval_result[3]}
-    elif args.dataset == "drcd":
-        eval_result = drcd_evaluation(eval_data, "tmp.answer")
-    else:
-        eval_result = squad_evaluation(eval_data, "tmp.answer")
+    # if dataset == "squad":
+    eval_result = squad_evaluation(eval_data, "tmp.answer")
+    # elif dataset == "cmrc":
+    #     eval_result = cmrc_evaluation(eval_data, "tmp.answer")
+    #     eval_result = {"f1_score": eval_result[0],
+    #                     "exact_match": eval_result[1],
+    #                     "total_count": eval_result[2],
+    #                     "skip_count": eval_result[3]}
+    # elif args.dataset == "drcd":
+    #     eval_result = drcd_evaluation(eval_data, "tmp.answer")
+    # else:
+    #     eval_result = squad_evaluation(eval_data, "tmp.answer")
 
     print("mu:{}, result:{}".format(mu, eval_result))
     return eval_result, answers

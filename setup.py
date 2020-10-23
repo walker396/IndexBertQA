@@ -10,10 +10,10 @@ setuptools.setup(
     name='indexbertqa',
     version='0.0.2',
     packages=['indexbertqa', 'indexbertqa.reader', 'indexbertqa.retriever', 'indexbertqa.experiments', 'indexbertqa.utils'],
-    url='https://github.com/rsvp-ai/bertserini',
+    url='https://github.com/walker396/IndexBertQA',
     license='',
     author='indexbertqa',
-    author_email='yuqing.xie@uwaterloo.ca',
+    author_email='jonnyho396@163.com',
     description='An end-to-end Open-Domain question answering system',
     install_requires=requirements,
     classifiers=[
