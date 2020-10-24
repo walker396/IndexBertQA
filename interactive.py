@@ -53,7 +53,7 @@ if __name__ == "__main__":
 
     while True:
         print("Please input your question[use empty line to exit]:")
-        question = Question(input(), "zh")
+        question = Question(input(), "en")
         contexts = retriever(question, searcher, 10)
         candidates = bert_reader.predict(question, contexts)
         answer = get_best_answer(candidates, 0.45)
