@@ -3,7 +3,7 @@ import string
 import logging
 import json
 import re
-import zhon
+
 import numpy as np
 
 
@@ -168,9 +168,9 @@ def normalize_text(s):
     return remove_punc(lower(s))
 
 
-def normalize_chinese_text(s):
-    def remove_punc(text):
-        exclude = set(zhon.hanzi.punctuation)
-        return ''.join(ch for ch in text if ch not in exclude)
-
-    return remove_punc(s)
+# def normalize_chinese_text(s):
+#     def remove_punc(text):
+#         exclude = set(zhon.hanzi.punctuation)
+#         return ''.join(ch for ch in text if ch not in exclude)
+#
+#     return remove_punc(s)
