@@ -5,7 +5,7 @@ from indexbertqa.utils.utils_new import get_best_answer
 
 if __name__ == "__main__":
 
-    bert_reader = BERT("rsvp-ai/indexbertqa-bert-base-cmrc", "rsvp-ai/indexbertqa-bert-base-cmrc")
+    bert_reader = BERT("rsvp-ai/indexbertqa-bert-base-cmrc")
     searcher = build_searcher("index/lucene-index.wiki_zh_paragraph_with_title_0.6.0.pos+docvectors")
 
     while True:

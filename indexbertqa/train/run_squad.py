@@ -136,10 +136,10 @@ def train(args, train_dataset, model, tokenizer):
             epochs_trained = global_step // (len(train_dataloader) // args.gradient_accumulation_steps)
             steps_trained_in_current_epoch = global_step % (len(train_dataloader) // args.gradient_accumulation_steps)
 
-            logger.info("  Continuing training from checkpoint, will skip to saved global_step")
-            logger.info("  Continuing training from epoch %d", epochs_trained)
-            logger.info("  Continuing training from global step %d", global_step)
-            logger.info("  Will skip the first %d steps in the first epoch", steps_trained_in_current_epoch)
+            # logger.info("  Continuing training from checkpoint, will skip to saved global_step")
+            # logger.info("  Continuing training from epoch %d", epochs_trained)
+            # logger.info("  Continuing training from global step %d", global_step)
+            # logger.info("  Will skip the first %d steps in the first epoch", steps_trained_in_current_epoch)
         except ValueError:
             logger.info("  Starting fine-tuning.")
 
@@ -171,17 +171,17 @@ def train(args, train_dataset, model, tokenizer):
                 "end_positions": batch[4],
             }
 
-            if args.model_type in ["xlm", "roberta", "distilbert", "camembert"]:
-                del inputs["token_type_ids"]
-
-            if args.model_type in ["xlnet", "xlm"]:
-                inputs.update({"cls_index": batch[5], "p_mask": batch[6]})
-                if args.version_2_with_negative:
-                    inputs.update({"is_impossible": batch[7]})
-                if hasattr(model, "config") and hasattr(model.config, "lang2id"):
-                    inputs.update(
-                        {"langs": (torch.ones(batch[0].shape, dtype=torch.int64) * args.lang_id).to(args.device)}
-                    )
+            # if args.model_type in ["xlm", "roberta", "distilbert", "camembert"]:
+            #     del inputs["token_type_ids"]
+            #
+            # if args.model_type in ["xlnet", "xlm"]:
+            #     inputs.update({"cls_index": batch[5], "p_mask": batch[6]})
+            #     if args.version_2_with_negative:
+            #         inputs.update({"is_impossible": batch[7]})
+            #     if hasattr(model, "config") and hasattr(model.config, "lang2id"):
+            #         inputs.update(
+            #             {"langs": (torch.ones(batch[0].shape, dtype=torch.int64) * args.lang_id).to(args.device)}
+            #         )
 
             outputs = model(**inputs)
             # model outputs are always tuple in transformers (see doc)
