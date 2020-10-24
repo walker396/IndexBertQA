@@ -49,7 +49,7 @@ from indexbertqa.utils.utils_new import get_best_answer
 if __name__ == "__main__":
 
     bert_reader = BERT("rsvp-ai/bertserini-bert-base-squad")
-    searcher = build_searcher("index/lucene-index.enwiki-20180701-paragraphs")
+    searcher = build_searcher("indexes/lucene-index.enwiki-20180701-paragraphs")
 
     while True:
         print("Please input your question[use empty line to exit]:")
