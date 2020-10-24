@@ -6,6 +6,7 @@ from indexbertqa.utils.utils_new import extract_squad_questions
 from indexbertqa.experiments.args import *
 
 if __name__ == "__main__":
+    print(args)
     questions = extract_squad_questions(args.dataset_path)
     bert_reader = BERT(args.model_name_or_path, args.tokenizer_name)
     searcher = build_searcher(args.index_path, language=args.language)
