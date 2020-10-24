@@ -1,4 +1,4 @@
-SQUAD_DIR=/data/yqxie/00_data/squad_v1.1
+SQUAD_DIR=/data
 
 python run_squad.py \
   --model_type bert \
